@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using SignalRCore.Middleware_Components;
 
 namespace SignalRCore
 {
@@ -38,15 +39,8 @@ namespace SignalRCore
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.Use(async (context,next) =>
-            {
-                var refer = context.Request.Headers["Referer"];
-                Console.WriteLine($"Request inbound from {refer}");
-                await next.Invoke();
-            });
-
-
             app.UseExceptionHandler();
+            app.UseRequestLogging();
 
             // Branch the request pipeline once we have the referer log setup and the exception handling code wired up.
             app.Map("/dmap", MapHandler1);
