@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SignalRCore.Controllers
+namespace CoreLearning.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
@@ -13,7 +13,8 @@ namespace SignalRCore.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "vaue2", "DaveRocks" };
+           
+            return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
