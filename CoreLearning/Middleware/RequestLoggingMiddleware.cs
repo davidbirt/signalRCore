@@ -26,8 +26,10 @@ namespace CoreLearning.Middleware
         public Task Invoke(HttpContext context)
         {
             var referer = context.Request.Headers["referer"];
-            Console.WriteLine(referer);
-
+            Console.WriteLine($@" Request Recieved from -> Referer: {referer}
+                                 LocalIp: {context.Connection.LocalIpAddress}
+                                 Remote: {context.Connection.RemoteIpAddress}");
+            
             return _next(context);
         }
     }
