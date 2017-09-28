@@ -30,8 +30,8 @@ namespace CoreLearning
             }
 
             app.UseExceptionHandler();
-            app.UseRequestLogging();
             app.UseStaticFiles();
+            app.UseRequestLogging();
             app.UseMvc();
         }
     }
