@@ -42,8 +42,8 @@ namespace CoreLearning
             app.UseStaticFiles();
 
             app.UseWebSockets(new WebSocketOptions() {
-                KeepAliveInterval = TimeSpan.FromSeconds(180),
-                ReceiveBufferSize = 5 * 1024
+                KeepAliveInterval = TimeSpan.FromSeconds(30), // debug on a 30 second ping so we can track the frames easier.
+                ReceiveBufferSize = 4 * 1024
             });
 
             app.Use(async (context, next) =>
